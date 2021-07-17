@@ -1,4 +1,4 @@
-package com.juylee.pinachigong.maker.chicken;
+package com.juylee.pinachigong.food.maker.chicken;
 
 import com.juylee.pinachigong.enums.Menu;
 

@@ -1,4 +1,4 @@
-package com.juylee.pinachigong.manager;
+package com.juylee.pinachigong.food.manager;
 
 import java.util.Collection;
 import java.util.HashMap;

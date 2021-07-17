@@ -1,25 +1,25 @@
-package com.juylee.pinachigong.maker.chicken;
+package com.juylee.pinachigong.food.maker.chicken;
 
 import org.springframework.stereotype.Component;
 
 import com.juylee.pinachigong.enums.Menu;
 
 @Component
-public class FriedChickenMaker implements ChickenMaker{
+public class GarlicChickenMaker implements ChickenMaker{
 
 	@Override
 	public Menu getMenu() {
-		return Menu.FRIED_CHICKEN;
+		return Menu.GARLIC_CHICKEN;
 	}
 
 	@Override
 	public String prepare() {
-		return "후라이드 치킨 준비";
+		return "갈릭 치킨 준비";
 	}
 
 	@Override
 	public String frying() {
-		return "후라이드 치킨 튀김";
+		return "갈릭 치킨 튀김";
 	}
 	
 }

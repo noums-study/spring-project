@@ -1,4 +1,4 @@
-package com.juylee.pinachigong.maker.chicken;
+package com.juylee.pinachigong.food.maker.chicken;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.juylee.pinachigong.enums.Menu;
-import com.juylee.pinachigong.manager.FoodManager;
+import com.juylee.pinachigong.food.manager.FoodManager;
 
 import lombok.RequiredArgsConstructor;
 

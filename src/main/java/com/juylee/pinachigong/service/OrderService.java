@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.juylee.pinachigong.dto.OrderRequest;
 import com.juylee.pinachigong.entity.Order;
-import com.juylee.pinachigong.manager.KitchenManager;
+import com.juylee.pinachigong.food.manager.KitchenManager;
 import com.juylee.pinachigong.repository.OrderListRepository;
 
 import lombok.RequiredArgsConstructor;

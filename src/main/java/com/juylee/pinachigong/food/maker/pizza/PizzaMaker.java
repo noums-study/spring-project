@@ -1,4 +1,4 @@
-package com.juylee.pinachigong.maker.pizza;
+package com.juylee.pinachigong.food.maker.pizza;
 
 import com.juylee.pinachigong.enums.Menu;
 
