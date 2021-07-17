@@ -61,10 +61,10 @@ public class Order {
 	private PayMethod payMethod;
 	
 	
-	public Order(Menu menu, String part, int count) {
+	public Order(Menu menu, int count) {
 		this.menu = menu;
 		this.count = count;
-		this.part = part;
+		this.part = menu.getPart();
 		this.orderDate = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
 	}
 	

@@ -16,9 +16,6 @@ public class OrderRequest {
 	private Menu menu;
 	
 	@NotNull
-	private String part;
-	
-	@NotNull
 	private int count;
 	
 	@NotNull

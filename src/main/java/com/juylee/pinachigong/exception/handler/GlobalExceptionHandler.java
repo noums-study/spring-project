@@ -7,8 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.juylee.pinachigong.config.Constant;
+import com.juylee.pinachigong.exception.NoMenuException;
 import com.juylee.pinachigong.util.ResponseBodyUtil;
 
 
@@ -16,8 +19,9 @@ import com.juylee.pinachigong.util.ResponseBodyUtil;
 public class GlobalExceptionHandler {
 	private Logger logger = LoggerFactory.getLogger(ApplicationRunner.class);
 	
+	@ExceptionHandler(NoMenuException.class)
 	public ResponseEntity<Map<String, Object>> noMenuException(Exception e) {
-		logger.warn("존재하지 않는 메뉴입니다.");
+		logger.warn(Constant.NO_MENU_EXCEPTION_MESSAGE);
 		
 		return new ResponseEntity<Map<String, Object>>(
 					ResponseBodyUtil.createExceptionResponseBody(

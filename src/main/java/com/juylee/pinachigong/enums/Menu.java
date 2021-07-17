@@ -1,5 +1,7 @@
 package com.juylee.pinachigong.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import lombok.Getter;
 
 @Getter
@@ -17,6 +19,16 @@ public enum Menu {
     private int price;
     private String part;
     private String menuName;
+    
+    @JsonCreator
+    public static Menu getEnumFromValue(String value) {
+    	for (Menu menu : values()) {
+            if (menu.name().equals(value)) {
+                return menu;
+            }
+        }
+        return null;
+    }
     
     Menu(int price, String part) {
     	this.price = price;

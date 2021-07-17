@@ -23,7 +23,7 @@ public class OrderController {
 	final private OrderService orderService;
 
 	@PostMapping(value = "/food")
-	public ResponseEntity<Map<String, Object>> order(@Valid @RequestBody OrderRequest orderRequest) throws Exception {
+	public ResponseEntity<Map<String, Object>> order(@RequestBody OrderRequest orderRequest) throws Exception {
 		this.orderService.order(orderRequest);
 		return ResponseEntity.ok(ResponseBodyUtil.createResponseData("주문 성공 완료"));
 	}
