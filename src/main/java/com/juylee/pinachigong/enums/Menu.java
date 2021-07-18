@@ -32,7 +32,7 @@ public enum Menu {
     	
     	// enum의 valueOf를 이용해서 값 체크
     	try {
-        	return Menu.valueOf(value);
+        	return Menu.valueOf(value.toUpperCase());
     	} catch (Exception e) {
     		return null;
     	}
