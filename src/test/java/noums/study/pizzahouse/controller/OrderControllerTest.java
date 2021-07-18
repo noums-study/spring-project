@@ -52,7 +52,7 @@ class OrderControllerTest {
     void failToOrder() throws Exception {
         //Given
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("menu", "WATERMELON");
+        jsonObject.put("menu", "Unknown");
         jsonObject.put("count","1");
         jsonObject.put("payMethod","card");
 
@@ -66,6 +66,7 @@ class OrderControllerTest {
 
                 //Then
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                ;
     }
 }

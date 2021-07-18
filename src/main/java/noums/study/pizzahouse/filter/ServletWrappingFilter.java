@@ -17,12 +17,9 @@ public class ServletWrappingFilter extends OncePerRequestFilter {
         System.out.println("##### ServletWrappingFilter doFilterInternal");
 
         RereadableRequestWrapper rereadableRequestWrapper = new RereadableRequestWrapper(httpServletRequest);
-        //ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(httpServletRequest);
+        /* HttpServletRequest wrapper that caches all content read from the input stream and reader, and allows this content to be retrieved via a byte array. */
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(httpServletResponse);
         filterChain.doFilter(rereadableRequestWrapper, responseWrapper);
-
-//        String requestBody = new String(requestWrapper.getContentAsByteArray());
-//        System.out.println("##### requestBody = " + requestBody);
         responseWrapper.copyBodyToResponse();
     }
 }

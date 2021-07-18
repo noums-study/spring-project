@@ -25,7 +25,7 @@ public class SimpleFilter {
         return bean;
     }
 
-    @Bean
+    //@Bean
     public FilterRegistrationBean<ServletWrappingFilter> servletWrappingFilter() {
         FilterRegistrationBean<ServletWrappingFilter> bean = new FilterRegistrationBean<>(new ServletWrappingFilter());
         bean.addUrlPatterns("/orders/*");

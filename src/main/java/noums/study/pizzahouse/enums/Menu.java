@@ -1,5 +1,6 @@
 package noums.study.pizzahouse.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 
 @Getter
@@ -19,5 +20,16 @@ public enum Menu {
     Menu(int price, String part) {
         this.price = price;
         this.part = part;
+    }
+
+    @JsonCreator
+    public static Menu fromValue(String value) {
+        // 보통 JsonCreator에서 Error 처리
+        for (Menu menu : Menu.values()) {
+            if (menu.name().equals(value)) {
+                return menu;
+            }
+        }
+        return null;
     }
 }

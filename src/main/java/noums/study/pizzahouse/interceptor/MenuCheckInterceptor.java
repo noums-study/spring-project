@@ -19,27 +19,19 @@ public class MenuCheckInterceptor implements HandlerInterceptor {
     ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("##### MenuCheckInterceptor preHandle");
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        System.out.println("##### [Interceptor] MenuCheckInterceptor preHandle");
 
         /* 시큐리티에서 RequestWrapper를 사용하는데 이 부분과 충돌나서 만약 이미 시큐리티에서 래핑한 클래스일 경우 다시 래핑하지 않도록 한다. */
         if (request.getClass().getName().contains("SecurityContextHolderAwareRequestWrapper")) return false;
-//        final ContentCachingRequestWrapper requestWrapper = (ContentCachingRequestWrapper) request;
-//        if (requestWrapper.getContentType() != null && requestWrapper.getContentType().contains("application/json")) {
-//            System.out.println("# Content-Type:\"application/json;");
-//            System.out.println("# requestWrapper.getContentAsByteArray().length = " + requestWrapper.getContentAsByteArray().length);
-//            if (requestWrapper.getContentAsByteArray() != null && requestWrapper.getContentAsByteArray().length != 0){
-//                System.out.println("# Request Body = " + objectMapper.readTree(requestWrapper.getContentAsByteArray()));
-//            }
-//        }
         final RereadableRequestWrapper rereadableRequestWrapper = (RereadableRequestWrapper) request;
         if (rereadableRequestWrapper.getContentType() != null && rereadableRequestWrapper.getContentType().contains("application/json")) {
-            if (rereadableRequestWrapper.getRawData() != null && rereadableRequestWrapper.getRawData().length != 0){
+            if (rereadableRequestWrapper.getRawData() != null && rereadableRequestWrapper.getRawData().length != 0) {
                 String data = rereadableRequestWrapper.getData();
                 System.out.println("data = " + data);
                 JSONObject mapper = new JSONObject(data);
-                if (!EnumUtils.isValidEnum(Menu.class, mapper.getString("menu"))){
-                    System.out.println("!!! Invalid menu !!!");
+                if (!EnumUtils.isValidEnum(Menu.class, mapper.getString("menu"))) {
+                    System.out.println("##### [Interceptor] Invalid menu ");
                     return false;
                 }
             }

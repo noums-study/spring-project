@@ -26,5 +26,9 @@ public class OrderController {
         return ResponseEntity.ok(service.order(req));
     }
 
-
+    @ExceptionHandler(RuntimeException.class)
+    public String handleRuntimeException() {
+        System.out.println("##### [error] OrderController Runtime Exception !");
+        return "error/RuntimeException";
+    }
 }
