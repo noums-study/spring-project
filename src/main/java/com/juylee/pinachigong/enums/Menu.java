@@ -22,12 +22,20 @@ public enum Menu {
     
     @JsonCreator
     public static Menu getEnumFromValue(String value) {
-    	for (Menu menu : values()) {
-            if (menu.name().equals(value)) {
-                return menu;
-            }
-        }
-        return null;
+    	// for 문으로 enum 값 체크
+//    	for (Menu menu : values()) {
+//            if (menu.name().equals(value)) {
+//                return menu;
+//            }
+//        }
+//    	return null;
+    	
+    	// enum의 valueOf를 이용해서 값 체크
+    	try {
+        	return Menu.valueOf(value);
+    	} catch (Exception e) {
+    		return null;
+    	}
     }
     
     Menu(int price, String part) {
