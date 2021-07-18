@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.juylee.pinachigong.config.Constant;
 import com.juylee.pinachigong.dto.OrderRequest;
-import com.juylee.pinachigong.enums.Menu;
 import com.juylee.pinachigong.exception.NoMenuException;
 
 @Aspect
@@ -18,10 +17,8 @@ public class OrderAop {
 	public void checkInvalidMenu(JoinPoint joinPoint) {
 		OrderRequest orderRequest = (OrderRequest)joinPoint.getArgs()[0];
 		
-		for(Menu menu : Menu.values()) {
-			if(menu.equals(orderRequest.getMenu())) {
-				return;
-			}
+		if(orderRequest.getMenu() != null) {
+			return;
 		}
 		
 		throw new NoMenuException(Constant.NO_MENU_EXCEPTION_MESSAGE);
