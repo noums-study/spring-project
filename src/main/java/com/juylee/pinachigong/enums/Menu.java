@@ -1,6 +1,8 @@
 package com.juylee.pinachigong.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.juylee.pinachigong.config.Constant;
+import com.juylee.pinachigong.exception.NoMenuException;
 
 import lombok.Getter;
 
@@ -35,6 +37,11 @@ public enum Menu {
         	return Menu.valueOf(value.toUpperCase());
     	} catch (Exception e) {
     		return null;
+//    		throw new NoMenuException(Constant.NO_MENU_EXCEPTION_MESSAGE);
+    		// 여기서 메뉴 체크를 해도 되지만 여기서 메뉴 체크를 할 경우 IllegalArgumentException의 에러 메시지까지
+    		// NoMenuException의 super(message)에 들어가 ReseponseBodyUtil에서 만드는
+    		// Exception 메시지가 더러워진다.
+    		// TODO: NoMenuException의 에러 메시지만 들어가게 하는 방법은 없을까?
     	}
     }
     
