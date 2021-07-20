@@ -3,11 +3,13 @@ package noums.study.pizzahouse.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import noums.study.pizzahouse.enums.FoodMenu;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import javax.persistence.*;
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity
@@ -20,12 +22,8 @@ public class OrderEntity {
     @Enumerated(EnumType.STRING)
     private FoodMenu menu;
 
-    private String price;
+    private int price;
+    private int count;
 
-    @Builder
-    public OrderEntity(FoodMenu menu, String price){
-        this.menu = menu;
-        this.price = price;
-    }
 
 }
