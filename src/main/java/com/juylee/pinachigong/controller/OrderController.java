@@ -2,9 +2,8 @@ package com.juylee.pinachigong.controller;
 
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class OrderController {
 	final private OrderService orderService;
 
 	@PostMapping(value = "/food")
-	public ResponseEntity<Map<String, Object>> order(@Valid @RequestBody OrderRequest orderRequest) throws Exception {
+	public ResponseEntity<Map<String, Object>> order(@Validated @RequestBody OrderRequest orderRequest) throws Exception {
 		this.orderService.order(orderRequest);
 		return ResponseEntity.ok(ResponseBodyUtil.createResponseData("주문 성공 완료"));
 	}

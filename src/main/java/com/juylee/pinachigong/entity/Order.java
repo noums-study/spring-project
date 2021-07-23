@@ -43,7 +43,7 @@ public class Order {
 	private String part;
 	
 	// enum 상수 값이 아닌 text 값 그대로 저장하기 위한 annotation
-	@Enumerated(value = EnumType.STRING)
+//	@Enumerated(value = EnumType.STRING)
 	@Column(name = "menu")
 	private Menu menu;
 	

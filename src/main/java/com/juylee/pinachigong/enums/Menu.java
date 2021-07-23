@@ -1,8 +1,6 @@
 package com.juylee.pinachigong.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.juylee.pinachigong.config.Constant;
-import com.juylee.pinachigong.exception.NoMenuException;
 
 import lombok.Getter;
 
@@ -15,7 +13,7 @@ public enum Menu {
     GARLIC_CHICKEN(15000, "CHICKEN"),
     FRIED_CHICKEN(12000, "CHICKEN"),
 
-    NONE(0, "");
+//    NONE(0, "");
     ;
     
     private int price;
