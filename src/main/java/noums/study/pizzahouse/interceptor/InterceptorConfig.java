@@ -12,7 +12,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     //특정 패턴의 URI 추가
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor( new ExceptionInterceptor()).addPathPatterns("/orders");
+       // registry.addInterceptor( new ExceptionInterceptor()).addPathPatterns("/orders");
     }
 
 }
