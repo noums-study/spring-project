@@ -30,7 +30,7 @@ public class MenuController {
 	
 	private final MenuService menuService;
 	
-	@PostMapping("/init")
+	@GetMapping("/init")
 	public ResponseEntity<Map<String, Object>> initMenuList() throws Exception {
 		this.menuService.initMenu();
 		return ResponseEntity.ok(ResponseBodyUtil.createResponseData("메뉴 리스트 초기화 완료"));
@@ -53,6 +53,14 @@ public class MenuController {
 		logger.info("==> /menu/update");
 		this.menuService.updateMenu(menuRequest);
 		return ResponseEntity.ok(ResponseBodyUtil.createResponseData(
-									String.format("%d 메뉴 업데이트 완료", menuRequest.getId())));
+									String.format("%d번 메뉴 업데이트 완료", menuRequest.getId())));
 	}
+	
+	@GetMapping("/delete/{id}")
+	public ResponseEntity<Map<String, Object>> deleteMenu(@PathVariable int id) throws Exception {
+		this.menuService.deleteOneMenu(id);
+		return ResponseEntity.ok(ResponseBodyUtil.createResponseData(
+				String.format("%d번 메뉴 삭제 완료", id)));
+	}
+	
 }

@@ -3,6 +3,7 @@ package com.juylee.pinachigong.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class MenuService {
 	
 	// 메뉴 리스트 가져오기
 	@Transactional(readOnly = true)
-	@Cacheable("menu")
+	@Cacheable(value = "menu")
 	public List<MenuList> getMenuList() {
 		return this.menuListRepository.findAll();
 	}
@@ -35,7 +36,7 @@ public class MenuService {
 		return this.menuListRepository.findById(id).orElseThrow();
 	}
 	
-	// 메뉴 테이블 업데이트 하기
+	// 메뉴 업데이트 하기
 	@CachePut(value = "menu", key = "#menuRequest.id")
 	public MenuList updateMenu(MenuRequest menuRequest) {
 		MenuList menuList = this.menuListRepository.findById(menuRequest.getId())
@@ -55,11 +56,13 @@ public class MenuService {
 	}
 	
 	// 메뉴 하나 삭제하기
-	public void deleteOneMenu(MenuRequest menuRequest) {
-		this.menuListRepository.deleteById(menuRequest.getId());
+	@CacheEvict(value = "menu", key = "#id")
+	public void deleteOneMenu(int id) {
+		this.menuListRepository.deleteById(id);
 	}
 	
 	// 메뉴 모두 삭제하기
+	@CacheEvict(value = "menu", allEntries = true)
 	public void deleteAllMenu(MenuRequest menuRequest) {
 		this.menuListRepository.deleteAll();
 	}
