@@ -1,8 +1,6 @@
 package noums.study.pizzahouse.interceptor;
 
-import noums.study.pizzahouse.enums.Menu;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

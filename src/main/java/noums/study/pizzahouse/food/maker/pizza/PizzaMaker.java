@@ -1,6 +1,6 @@
 package noums.study.pizzahouse.food.maker.pizza;
 
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 
 public interface PizzaMaker {
 
@@ -10,7 +10,7 @@ public interface PizzaMaker {
      return "도우 만들기";
     }
 
-    public Menu getMenu();
+    public Menus getMenu();
 
     public String prepare();
 

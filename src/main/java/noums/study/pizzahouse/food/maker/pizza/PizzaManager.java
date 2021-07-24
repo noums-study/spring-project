@@ -2,7 +2,7 @@ package noums.study.pizzahouse.food.maker.pizza;
 
 
 import lombok.RequiredArgsConstructor;
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 import noums.study.pizzahouse.food.manager.FoodManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class PizzaManager implements FoodManager {
 
     final private ApplicationContext applicationContext;
 
-    private Map<Menu, PizzaMaker> makers = new HashMap<>();
+    private Map<Menus, PizzaMaker> makers = new HashMap<>();
 
     @PostConstruct
     public void init() {
@@ -36,8 +36,8 @@ public class PizzaManager implements FoodManager {
     }
 
     @Override
-    public String makeFood(Menu menu) {
-        PizzaMaker maker = makers.get(menu);
+    public String makeFood(Menus menus) {
+        PizzaMaker maker = makers.get(menus);
         maker.prepare();
         maker.makeDough();
         maker.bake();

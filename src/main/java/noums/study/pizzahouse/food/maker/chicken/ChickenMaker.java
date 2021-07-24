@@ -1,10 +1,10 @@
 package noums.study.pizzahouse.food.maker.chicken;
 
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 
 public interface ChickenMaker {
 
-    public Menu getMenu();
+    public Menus getMenu();
 
     public String prepare();
 

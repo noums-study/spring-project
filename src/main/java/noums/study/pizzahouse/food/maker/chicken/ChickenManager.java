@@ -2,7 +2,7 @@ package noums.study.pizzahouse.food.maker.chicken;
 
 
 import lombok.RequiredArgsConstructor;
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 import noums.study.pizzahouse.food.manager.FoodManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class ChickenManager implements FoodManager {
 
     final private ApplicationContext applicationContext;
 
-    private Map<Menu, ChickenMaker> makers = new HashMap<>();
+    private Map<Menus, ChickenMaker> makers = new HashMap<>();
 
     @PostConstruct
     public void init() {
@@ -31,8 +31,8 @@ public class ChickenManager implements FoodManager {
     }
 
     @Override
-    public String makeFood(Menu menu) {
-        ChickenMaker maker = makers.get(menu);
+    public String makeFood(Menus menus) {
+        ChickenMaker maker = makers.get(menus);
         maker.prepare();
         maker.frying();
         return "chicken";

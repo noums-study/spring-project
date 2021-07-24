@@ -1,11 +1,11 @@
 package noums.study.pizzahouse.food.manager;
 
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 
 public interface FoodManager {
 
     public String getPart();
 
-    public String makeFood(Menu menu);
+    public String makeFood(Menus menus);
 
 }

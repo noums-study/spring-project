@@ -1,7 +1,7 @@
 package noums.study.pizzahouse.food.manager;
 
 import lombok.RequiredArgsConstructor;
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -28,10 +28,10 @@ public class KitchenManager {
         }
     }
 
-    public String makeFood(Menu menu) {
+    public String makeFood(Menus menus) {
 
-        FoodManager manager = managers.get(menu.getPart());
-        return manager.makeFood(menu);
+        FoodManager manager = managers.get(menus.getPart());
+        return manager.makeFood(menus);
     }
 
 }

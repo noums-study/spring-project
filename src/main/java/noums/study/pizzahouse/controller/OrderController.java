@@ -2,7 +2,7 @@ package noums.study.pizzahouse.controller;
 
 import lombok.RequiredArgsConstructor;
 import noums.study.pizzahouse.bean.OrderRequest;
-import noums.study.pizzahouse.enums.Menu;
+import noums.study.pizzahouse.enums.Menus;
 import noums.study.pizzahouse.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +22,8 @@ public class OrderController {
     @GetMapping()
     public ResponseEntity<?> orderTest() {
         OrderRequest req = new OrderRequest();
-        req.setMenu(Menu.FRIED_CHICKEN);
+        req.setMenus(Menus.FRIED_CHICKEN);
         return ResponseEntity.ok(service.order(req));
     }
-
 
 }

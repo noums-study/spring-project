@@ -7,6 +7,8 @@ import noums.study.pizzahouse.food.manager.KitchenManager;
 import noums.study.pizzahouse.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class OrderService {
@@ -18,17 +20,16 @@ public class OrderService {
     public String order(OrderRequest req) {
         OrderInfo order = new OrderInfo();
         order.setCount(req.getCount());
-        order.setMenu(req.getMenu());
-        order.setTotalPrice(req.getCount() * req.getMenu().getPrice());
+        order.setMenus(req.getMenus());
+        order.setTotalPrice(req.getCount() * req.getMenus().getPrice());
         repository.save(order);
         // 주문
         // ...
         // 결제
-        payService.pay(req.getPayMethod(), req.getMenu().getPrice());
+        payService.pay(req.getPayMethod(), req.getMenus().getPrice());
         // 제조
-        manager.makeFood(req.getMenu());
+        manager.makeFood(req.getMenus());
         return "complete";
     }
-
 
 }
