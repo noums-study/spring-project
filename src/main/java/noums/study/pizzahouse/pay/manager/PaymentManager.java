@@ -1,7 +1,6 @@
 package noums.study.pizzahouse.pay.manager;
 
 import lombok.RequiredArgsConstructor;
-import noums.study.pizzahouse.enums.Menu;
 import noums.study.pizzahouse.enums.PayMethod;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -31,7 +30,7 @@ public class PaymentManager {
 
     public String processPayment(PayMethod method, int amount) {
         PaymentMethod paymentMethod = managers.get(method);
-        paymentMethod.pay(method, amount);
+        //paymentMethod.pay(method, amount);
         return "결제 완료";
     }
 

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class PizzahouseExceptionHandler {
 
     @ExceptionHandler(PizzahouseException.class)
-    public void handlingPizzahouseException() {
-      log.error("error handling");
+    public void handlingPizzahouseException(PizzahouseException e) {
+        log.error("PizzahouseException 발생! 에러코드 : {}", e.getErrorCode());
     }
 
 

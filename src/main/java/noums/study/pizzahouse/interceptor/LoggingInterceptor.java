@@ -2,15 +2,8 @@ package noums.study.pizzahouse.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import noums.study.pizzahouse.bean.OrderRequest;
-import noums.study.pizzahouse.bean.RereadableRequestWrapper;
-import noums.study.pizzahouse.enums.Menu;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.util.ContentCachingRequestWrapper;
-import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,20 +17,20 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("### Interceptor preHandle ");
 
-        if (request.getClass().getName().contains("SecurityContextHolderAwareRequestWrapper")) return false;
-        final RereadableRequestWrapper rereadableRequestWrapper = (RereadableRequestWrapper) request;
-        if (rereadableRequestWrapper.getContentType() != null && rereadableRequestWrapper.getContentType().contains("application/json")) {
-            if (rereadableRequestWrapper.getRawData() != null && rereadableRequestWrapper.getRawData().length != 0){
-                String data = rereadableRequestWrapper.getData();
-                System.out.println(data);
-                OrderRequest orderRequest = objectMapper.readValue(data, OrderRequest.class);
-                Menu menu = orderRequest.getMenu();
-                System.out.println(menu);
-                if (menu == Menu.NONE) {
-                    return false;
-                }
-            }
-        }
+//        if (request.getClass().getName().contains("SecurityContextHolderAwareRequestWrapper")) return false;
+//        final RereadableRequestWrapper rereadableRequestWrapper = (RereadableRequestWrapper) request;
+//        if (rereadableRequestWrapper.getContentType() != null && rereadableRequestWrapper.getContentType().contains("application/json")) {
+//            if (rereadableRequestWrapper.getRawData() != null && rereadableRequestWrapper.getRawData().length != 0){
+//                String data = rereadableRequestWrapper.getData();
+//                System.out.println(data);
+//                OrderRequest orderRequest = objectMapper.readValue(data, OrderRequest.class);
+//                Menu menu = orderRequest.getMenu();
+//                System.out.println(menu);
+//                if (menu == Menu.NONE) {
+//                    return false;
+//                }
+//            }
+//        }
         return true;
     }
 
@@ -45,12 +38,12 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("### Interceptor postHandle ");
 
-        final ContentCachingResponseWrapper cachingResponse = (ContentCachingResponseWrapper) response;
-        if (cachingResponse.getContentType() != null && cachingResponse.getContentType().contains("application/json")) {
-            if (cachingResponse.getContentAsByteArray() != null && cachingResponse.getContentAsByteArray().length != 0) {
-                System.out.println("aaaaa");
-            }
-        }
+//        final ContentCachingResponseWrapper cachingResponse = (ContentCachingResponseWrapper) response;
+//        if (cachingResponse.getContentType() != null && cachingResponse.getContentType().contains("application/json")) {
+//            if (cachingResponse.getContentAsByteArray() != null && cachingResponse.getContentAsByteArray().length != 0) {
+//                System.out.println("aaaaa");
+//            }
+//        }
     }
 
     @Override
@@ -62,11 +55,11 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
 //            if (cachingRequest.getContentAsByteArray() != null && cachingRequest.getContentAsByteArray().length != 0){
 //                log.info("Request Body : {}", objectMapper.readTree(cachingRequest.getContentAsByteArray())); }
 //        }
-        final ContentCachingResponseWrapper cachingResponse = (ContentCachingResponseWrapper) response;
-        if (cachingResponse.getContentType() != null && cachingResponse.getContentType().contains("application/json")) {
-            if (cachingResponse.getContentAsByteArray() != null && cachingResponse.getContentAsByteArray().length != 0) {
-                log.info("Response Body : {}", objectMapper.readTree(cachingResponse.getContentAsByteArray()));
-            }
-        }
+//        final ContentCachingResponseWrapper cachingResponse = (ContentCachingResponseWrapper) response;
+//        if (cachingResponse.getContentType() != null && cachingResponse.getContentType().contains("application/json")) {
+//            if (cachingResponse.getContentAsByteArray() != null && cachingResponse.getContentAsByteArray().length != 0) {
+//                log.info("Response Body : {}", objectMapper.readTree(cachingResponse.getContentAsByteArray()));
+//            }
+//        }
     }
 }

@@ -9,4 +9,7 @@ public class PizzahouseException extends RuntimeException{
     }
 
 
+    public ErrorCode getErrorCode() {
+        return this.errorCode;
+    }
 }
