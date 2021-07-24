@@ -5,7 +5,6 @@ import noums.study.pizzahouse.bean.OrderRequest;
 import noums.study.pizzahouse.domain.OrderEntity;
 import noums.study.pizzahouse.domain.OrderJpaRepository;
 import noums.study.pizzahouse.manager.KitchenManager;
-import noums.study.pizzahouse.manager.PizzaManager;
 import noums.study.pizzahouse.pay.PayManager;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +30,7 @@ public class OrderService {
         kitchenManager.makeFood(req.getMenu());
         return "complete";
     }
+
 
 
 }
