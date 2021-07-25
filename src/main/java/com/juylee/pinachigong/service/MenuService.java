@@ -1,6 +1,7 @@
 package com.juylee.pinachigong.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.cache.annotation.CacheEvict;
@@ -63,13 +64,13 @@ public class MenuService {
 	
 	// 메뉴 모두 삭제하기
 	@CacheEvict(value = "menu", allEntries = true)
-	public void deleteAllMenu(MenuRequest menuRequest) {
-		this.menuListRepository.deleteAll();
+	public void deleteAllMenu() {
+		this.menuListRepository.deleteAllInBatch();
 	}
 	
 	// 메뉴 처음에 다 넣기
 	public void initMenu() {
-		this.menuListRepository.deleteAll();
+		this.deleteAllMenu();
 		
 		List<MenuList> menuLists = new ArrayList<MenuList>();
 		
