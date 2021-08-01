@@ -2,8 +2,6 @@ package com.juylee.pinachigong.controller;
 
 import java.util.Map;
 
-import javax.websocket.server.PathParam;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
@@ -56,11 +54,24 @@ public class MenuController {
 									String.format("%d번 메뉴 업데이트 완료", menuRequest.getId())));
 	}
 	
+	@GetMapping("/update/all")
+	public ResponseEntity<Map<String, Object>> updateAllMenu() throws Exception {
+		logger.info("==> /menu/update/all");
+		this.menuService.updateAllMenu();
+		return ResponseEntity.ok(ResponseBodyUtil.createResponseData("모든 메뉴 업데이트 완료"));
+	}
+	
 	@GetMapping("/delete/{id}")
 	public ResponseEntity<Map<String, Object>> deleteMenu(@PathVariable int id) throws Exception {
 		this.menuService.deleteOneMenu(id);
 		return ResponseEntity.ok(ResponseBodyUtil.createResponseData(
 				String.format("%d번 메뉴 삭제 완료", id)));
+	}
+	
+	@GetMapping("/delete/all")
+	public ResponseEntity<Map<String, Object>> deleteAllMenu() throws Exception {
+		this.menuService.deleteAllMenu();
+		return ResponseEntity.ok(ResponseBodyUtil.createResponseData("모든 메뉴 삭제 완료"));
 	}
 	
 }

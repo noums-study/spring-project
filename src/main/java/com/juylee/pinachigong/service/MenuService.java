@@ -56,6 +56,12 @@ public class MenuService {
 		return menuList;
 	}
 	
+	// 모든 메뉴 업데이트
+	@CachePut(value = "menu", key = "'SimpleKey []'")
+	public List<MenuList> updateAllMenu(){
+		return this.menuListRepository.findAll();
+	}
+	
 	// 메뉴 하나 삭제하기
 	@CacheEvict(value = "menu", key = "#id")
 	public void deleteOneMenu(int id) {
